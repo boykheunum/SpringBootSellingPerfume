@@ -5,30 +5,41 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "user")
 public class UserEntity extends AbtractEntity {
 
-  @Column(name = "birthday")
+  @Column(name = "birthday", columnDefinition = "varchar(50)")
   private Date birthday;
-  @Column(name = "username", columnDefinition = "nvarchar(50)")
+
+  @Column(name = "username", columnDefinition = "varchar(50)")
   private String username;
-  @Column(name = "password", columnDefinition = "nvarchar(50)")
+
+  @Column(name = "password", columnDefinition = "varchar(50)")
   private String password;
-  @Column(name = "name", columnDefinition = "nvarchar(50)")
+
+  @Column(name = "name", columnDefinition = "varchar(50)")
   private String name;
-  @Column(name = "phone", columnDefinition = "nvarchar(50)")
+
+  @Column(name = "phone", columnDefinition = "varchar(50)")
   private String phone;
-  @Column(name = "email", columnDefinition = "nvarchar(50)")
+
+  @Column(name = "email", columnDefinition = "varchar(50)")
   private String email;
-  @Column(name = "adress", columnDefinition = "nvarchar(50)")
+
+  @Column(name = "adress", columnDefinition = "varchar(50)")
   private String adress;
-  @Column(name = "avatar", columnDefinition = "nvarchar(50)")
+
+  @Column(name = "avatar", columnDefinition = "varchar(50)")
   private String avatar;
-  @Column(name = "sex", columnDefinition = "nvarchar(50)")
-  private boolean sex;
-  @Column(name = "status_user", columnDefinition = "boolean default true ")
+
+  @Column(name = "status_user")
   private boolean status_user;
+
+  @Column(name = "sex", columnDefinition = "boolean default true ")
+  private boolean sex;
+
 
 
   public Date getBirthday() {
@@ -52,15 +63,6 @@ public class UserEntity extends AbtractEntity {
   }
 
   public void setPassword(String password) {
-    this.password = password;
-  }
-
-
-  public String getPassWord() {
-    return password;
-  }
-
-  public void setPassWord(String password) {
     this.password = password;
   }
 
@@ -119,4 +121,5 @@ public class UserEntity extends AbtractEntity {
   public void setStatus_user(boolean status_user) {
     this.status_user = status_user;
   }
+  
 }
