@@ -1,35 +1,20 @@
-package com.sellingperfume.entity;
+package com.sellingperfume.DTO;
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
-@Entity
-@Table(name = "user")
-public class UserEntity extends AbtractEntity {
 
-  @Column(name = "birthday")
+public class UserDTO extends AbtractDTO{
   private Date birthday;
-  @Column(name = "username", columnDefinition = "nvarchar(50)")
   private String username;
-  @Column(name = "password", columnDefinition = "nvarchar(50)")
   private String password;
-  @Column(name = "name", columnDefinition = "nvarchar(50)")
   private String name;
-  @Column(name = "phone", columnDefinition = "nvarchar(50)")
   private String phone;
-  @Column(name = "email", columnDefinition = "nvarchar(50)")
   private String email;
-  @Column(name = "adress", columnDefinition = "nvarchar(50)")
   private String adress;
-  @Column(name = "avatar", columnDefinition = "nvarchar(50)")
   private String avatar;
-  @Column(name = "sex", columnDefinition = "nvarchar(50)")
   private boolean sex;
-  @Column(name = "status_user", columnDefinition = "boolean default true ")
   private boolean status_user;
-
+  private int luong;
 
   public Date getBirthday() {
     return birthday;
@@ -52,15 +37,6 @@ public class UserEntity extends AbtractEntity {
   }
 
   public void setPassword(String password) {
-    this.password = password;
-  }
-
-
-  public String getPassWord() {
-    return password;
-  }
-
-  public void setPassWord(String password) {
     this.password = password;
   }
 
@@ -119,4 +95,35 @@ public class UserEntity extends AbtractEntity {
   public void setStatus_user(boolean status_user) {
     this.status_user = status_user;
   }
+
+  public int getLuong() {
+    return luong;
+  }
+
+  public void setLuong(int luong) {
+    this.luong = luong;
+  }
+
+  public UserDTO() {
+    super();
+    // TODO Auto-generated constructor stub
+  }
+
+  public UserDTO(Date birthday, String username, String password, String name, String phone,
+      String email, String adress, String avatar, boolean sex, boolean status_user, int luong) {
+    super();
+    this.birthday = birthday;
+    this.username = username;
+    this.password = password;
+    this.name = name;
+    this.phone = phone;
+    this.email = email;
+    this.adress = adress;
+    this.avatar = avatar;
+    this.sex = sex;
+    this.status_user = status_user;
+    this.luong = luong;
+  }
+
+
 }
