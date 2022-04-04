@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: tiendat
+Build-Jdk: 15.0.1
+Implementation-Title: SellingperfumeSpringboot
+Implementation-Version: 1.0
+Implementation-Vendor-Id: com.sellingPerfumeSpringBoot
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/selling-perfume-spring-boot
+Created-By: Maven Integration for Eclipse
+

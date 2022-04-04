@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.ServletContext;
@@ -47,24 +48,27 @@ public class UserServiceImplements implements IUserService, IUploadFile {
   public Optional<UserEntity> findUserById(int id) {
     // TODO Auto-generated method stub
     Optional<UserEntity> user = iRepositories.findById(id);
-    
+
     return user;
   }
 
   @Override
   public int UploadFile(String path, MultipartFile file) {
     // TODO Auto-generated method stub
-    path = applicationContext.getRealPath("UserAvatar");
     File avatarRootPathFile = new File(path);
     if (!avatarRootPathFile.exists()) {
       avatarRootPathFile.mkdir();
     }
+    List<File> uploadedFiles = new ArrayList<File>();
+    // ten file goc tai client
     String fileName = file.getOriginalFilename();
+    // tao file tai server
     File fileSever = new File(avatarRootPathFile.getAbsoluteFile() + File.separator + fileName);
     try {
       BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileSever));
       stream.write(file.getBytes());
       stream.close();
+      uploadedFiles.add(fileSever);
     } catch (FileNotFoundException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

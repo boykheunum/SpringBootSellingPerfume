@@ -29,7 +29,7 @@ public class EmployeesEntity extends AbtractEntity {
   private String password;
 
   @Column(name = "salary")
-  private String salary;
+  private int salary;
 
   @ManyToOne
   private DepartmentEntity department;
@@ -82,11 +82,11 @@ public class EmployeesEntity extends AbtractEntity {
     this.password = password;
   }
 
-  public String getSalary() {
+  public int getSalary() {
     return salary;
   }
 
-  public void setSalary(String salary) {
+  public void setSalary(int salary) {
     this.salary = salary;
   }
 

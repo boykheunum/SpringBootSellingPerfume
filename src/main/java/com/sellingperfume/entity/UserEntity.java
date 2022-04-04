@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class UserEntity extends AbtractEntity {
 
   @Column(name = "birthday", columnDefinition = "varchar(50)")
-  private Date birthday;
+  private String birthday;
 
   @Column(name = "username", columnDefinition = "varchar(50)")
   private String username;
@@ -34,7 +34,7 @@ public class UserEntity extends AbtractEntity {
   @Column(name = "avatar", columnDefinition = "varchar(50)")
   private String avatar;
 
-  @Column(name = "status_user")
+  @Column(name = "status_user", columnDefinition = "boolean default true ")
   private boolean status_user;
 
   @Column(name = "sex", columnDefinition = "boolean default true ")
@@ -42,11 +42,11 @@ public class UserEntity extends AbtractEntity {
 
 
 
-  public Date getBirthday() {
+  public String getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(Date birthday) {
+  public void setBirthday(String birthday) {
     this.birthday = birthday;
   }
 
@@ -118,8 +118,9 @@ public class UserEntity extends AbtractEntity {
     return status_user;
   }
 
-  public void setStatus_user(boolean status_user) {
-    this.status_user = status_user;
+  public UserEntity() {
+    super();
   }
-  
+
+
 }

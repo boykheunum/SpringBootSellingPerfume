@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="POST" th:action="@{/dangky}" th:object="${users}" enctype="multipart/form-data">
+		<label>Username</label>
+		<input type="text" th:field="*{username}" />
+		<label>Name</label>
+		<input type="text" th:field="*{name}" />
+		<label>Birtday</label>
+		<input type="date" th:field="*{birthday}" />
+		<label>Password</label>
+		<input type="text" th:field="*{password}" />
+		<label>Phone</label>
+		<input type="text" th:field="*{phone}" />
+		<label>Email</label>
+		<input type="text" th:field="*{email}" />
+		<label>Adress</label>
+		<input type="text" th:field="*{adress}"/>
+		<label>Avatar</label>
+		<input type="file" name="avatarUser"/>
+		<label>Sex</label>
+		<input type="radio" th:field="*{sex}" name="sex" value='1'/>Nam
+		<input type="radio" th:field="*{sex}" name="sex" value='0'/>Nữ
+		<button type="submit">save</button>
+	</form>
+	
+</body>
+<script></script>
+</html>
