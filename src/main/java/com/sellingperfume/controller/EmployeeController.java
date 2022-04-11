@@ -23,7 +23,7 @@ public class EmployeeController {
   }
   @GetMapping(path = "chart")
   public ModelAndView charts(Model model) {
-    ModelAndView mView = new ModelAndView("chart");
+    ModelAndView mView = new ModelAndView("templates/chart");
     List<EmployeesEntity> listEmployees = employServiceImplements.GetAllUser();
     model.addAttribute("listEmployees", listEmployees);
     return mView;

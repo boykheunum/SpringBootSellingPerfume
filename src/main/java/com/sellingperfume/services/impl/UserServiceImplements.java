@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -79,5 +82,13 @@ public class UserServiceImplements implements IUserService, IUploadFile {
       return -2;
     }
     return 1;
+  }
+
+  @Override
+  public UserDetails FindUserByUsername(String userName) {
+    // TODO Auto-generated method stub
+    UserEntity uEntity = iRepositories.FindUserByUS(userName);
+    UserDetails userDetails = (UserDetails) new User(uEntity.getUsername(), uEntity.getPassword(), null);
+    return userDetails;
   }
 }

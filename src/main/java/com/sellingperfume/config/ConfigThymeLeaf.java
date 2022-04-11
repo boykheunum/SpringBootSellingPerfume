@@ -23,7 +23,7 @@ public class ConfigThymeLeaf implements WebMvcConfigurer {
     // resource resolution infrastructure, which is highly recommended.
     SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
     templateResolver.setApplicationContext(this.applicationContext);
-    templateResolver.setPrefix("/WEB-INF/templates/");
+    templateResolver.setPrefix("/WEB-INF/");
     templateResolver.setSuffix(".html");
     templateResolver.setCharacterEncoding("UTF-8");
     // HTML is the default value, added here for the sake of clarity.

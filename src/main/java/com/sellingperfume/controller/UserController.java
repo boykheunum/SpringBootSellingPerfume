@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -30,7 +32,11 @@ public class UserController {
   @Autowired
   public UserServiceImplements userServiceImplements;
   
-
+  @RequestMapping(path="/login", method = RequestMethod.GET)
+  public ModelAndView Login(Model model) {
+    ModelAndView mView = new ModelAndView("templates/Login");
+    return mView;
+  }
   @GetMapping(path = "home")
   public ModelAndView homePage(Model model) {
     ModelAndView mView = new ModelAndView("HomePage");
@@ -45,7 +51,7 @@ public class UserController {
 
   @GetMapping(path = "viewdangky")
   public ModelAndView ViewDangKy(Model model) {
-    ModelAndView mView = new ModelAndView("ViewDangKy");
+    ModelAndView mView = new ModelAndView("/templates/ViewDangKy");
     UserEntity users = new UserEntity();
     model.addAttribute("users", users);
     return mView;

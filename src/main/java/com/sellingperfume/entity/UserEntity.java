@@ -39,6 +39,9 @@ public class UserEntity extends AbtractEntity {
 
   @Column(name = "sex", columnDefinition = "boolean default true ")
   private boolean sex;
+  
+  @Column(name = "role", columnDefinition = "varchar(50) default USER")
+  private String role;
 
 
 
@@ -76,6 +79,14 @@ public class UserEntity extends AbtractEntity {
 
   public String getPhone() {
     return phone;
+  }
+
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
   }
 
   public void setPhone(String phone) {
