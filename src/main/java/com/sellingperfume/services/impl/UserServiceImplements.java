@@ -88,7 +88,14 @@ public class UserServiceImplements implements IUserService, IUploadFile {
   public UserDetails FindUserByUsername(String userName) {
     // TODO Auto-generated method stub
     UserEntity uEntity = iRepositories.FindUserByUS(userName);
+   
     UserDetails userDetails = (UserDetails) new User(uEntity.getUsername(), uEntity.getPassword(), null);
     return userDetails;
+  }
+
+  @Override
+  public List<String> RoleName(int userID) {
+    // TODO Auto-generated method stub
+    return null;
   }
 }
