@@ -26,8 +26,7 @@ import com.sellingperfume.services.IUserService;
 public class UserServiceImplements implements IUserService, IUploadFile {
   @Autowired
   private IRepositories iRepositories;
-  @Autowired
-  private ServletContext applicationContext;
+
 
   @Override
   public List<UserEntity> GetAllUser() {
@@ -84,18 +83,7 @@ public class UserServiceImplements implements IUserService, IUploadFile {
     return 1;
   }
 
-  @Override
-  public UserDetails FindUserByUsername(String userName) {
-    // TODO Auto-generated method stub
-    UserEntity uEntity = iRepositories.FindUserByUS(userName);
-   
-    UserDetails userDetails = (UserDetails) new User(uEntity.getUsername(), uEntity.getPassword(), null);
-    return userDetails;
-  }
 
-  @Override
-  public List<String> RoleName(int userID) {
-    // TODO Auto-generated method stub
-    return null;
-  }
+
+
 }

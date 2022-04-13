@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 12, 2022 lúc 05:56 AM
+-- Thời gian đã tạo: Th4 13, 2022 lúc 10:21 AM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 8.0.12
 
@@ -84,7 +84,7 @@ CREATE TABLE `user` (
   `birthday` varchar(50) CHARACTER SET utf8mb4 DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `password` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `password` varchar(250) CHARACTER SET utf8 DEFAULT NULL,
   `phone` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `sex` tinyint(1) DEFAULT 1,
   `status_user` tinyint(1) DEFAULT 1,
@@ -97,23 +97,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `adress`, `avatar`, `birthday`, `email`, `name`, `password`, `phone`, `sex`, `status_user`, `username`, `role`) VALUES
-(5, '95 Hàng Mã', 'testvares6.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(6, '95 Hàng Mã', 'baitap.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 1, 0, 'boykheunum', 'USER'),
-(7, '95 Hàng Mã', 'testvares6.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 1, 0, 'boykheunum', 'USER'),
-(8, '95 Hàng Mã', 'testvares6.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(9, '95 Hàng Mã', 'testvares6.js', '2022-04-04', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(10, '95 Hàng Mã', 'testvares6.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(11, '95 Hàng Mã', 'testvares6.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(12, '95 Hàng Mã', 'baitap.js', '', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(13, '95 Hàng Mã', 'baitap.js', '2022-03-28', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(14, '95 Hàng Mã', 'baitap.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(15, '95 Hàng Mã', 'testvares6.js', '2022-04-02', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'mk22812@yahoo.com', 'USER'),
-(16, '95 Hàng Mã', 'baitap.js', '2022-03-29', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 1, 0, 'boykheunum', 'USER'),
-(17, '95 Hàng Mã', '248286137_976728909636882_343543042411297893_n.png', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(18, '95 Hàng Mã', '', '2022-03-30', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 1, 0, 'boykheunum', 'USER'),
-(19, '95 Hàng Mã', '248286137_976728909636882_343543042411297893_n.png', '2022-03-28', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 1, 0, 'boykheunum', 'USER'),
-(20, '95 Hàng Mã', 'GearVN_Leviathan_ (2).jpg', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'boykheunum', 'USER'),
-(21, '237 Hoàng Quốc Việt', 'abcde.png', '2021-12-02', 'linhdbp2609@gmail.com', 'Lò Hoàng Linh', '123', '0865228067', 1, 1, 'US009', 'USER');
+(5, '95 Hàng Mã', 'testvares6.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '$2a$12$QGL0NFQzW6/MO83Mh2Ehc.z9CuXWhocS3Js8kcwNI1vVrbPEC9rLG', '0865228067', 0, 0, 'boykheunum', 'USER'),
+(8, '95 Hàng Mã', 'testvares6.js', '2022-04-05', 'tiendat28121999@gmail.com', 'Đạt Nguyễn', '123', '0865228067', 0, 0, 'us1', 'USER');
 
 --
 -- Chỉ mục cho các bảng đã đổ

@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.google.gson.Gson;
 import com.sellingperfume.entity.UserEntity;
-
+import com.sellingperfume.repositories.IRepositories;
 import com.sellingperfume.services.impl.UserServiceImplements;
 
 
@@ -31,12 +31,15 @@ public class UserController {
   public UserEntity userEntity;
   @Autowired
   public UserServiceImplements userServiceImplements;
-  
-  @RequestMapping(path="/login", method = RequestMethod.GET)
+  @Autowired
+  private IRepositories iRepositories;
+
+  @RequestMapping(path = "/login", method = RequestMethod.GET)
   public ModelAndView Login(Model model) {
     ModelAndView mView = new ModelAndView("templates/Login");
     return mView;
   }
+
   @GetMapping(path = "home")
   public ModelAndView homePage(Model model) {
     ModelAndView mView = new ModelAndView("HomePage");
@@ -58,15 +61,19 @@ public class UserController {
   }
 
   @PostMapping(path = "/dangky")
-  public ResponseEntity<UserEntity> signup(@ModelAttribute("users") UserEntity dataUser, @RequestParam("avatarUser") MultipartFile multipartFile) {
+  public ResponseEntity<UserEntity> signup(@ModelAttribute("users") UserEntity dataUser,
+      @RequestParam("avatarUser") MultipartFile multipartFile) {
     dataUser.setAvatar(multipartFile.getOriginalFilename());
-    userServiceImplements.UploadFile("C:\\Users\\tiend\\eclipse-workspace\\SpringBootSellingPerfume\\src\\main\\resources\\uploadfile", multipartFile);
+    userServiceImplements.UploadFile(
+        "C:\\Users\\tiend\\eclipse-workspace\\SpringBootSellingPerfume\\src\\main\\resources\\uploadfile",
+        multipartFile);
     UserEntity users = userServiceImplements.CreateUser(dataUser);
     if (users != null) {
       return new ResponseEntity<UserEntity>(users, HttpStatus.OK);
     }
     return new ResponseEntity<UserEntity>(users, HttpStatus.NOT_FOUND);
   }
+
 
   @PutMapping(path = "UpdateUser")
   public ResponseEntity<UserEntity> UpdateUser(@RequestBody UserEntity dataUser,

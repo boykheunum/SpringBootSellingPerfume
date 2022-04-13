@@ -14,7 +14,5 @@ public interface IUserService {
 
   public Optional<UserEntity> findUserById(int id);
   
-  public UserDetails FindUserByUsername(String userName);
-  
-  public List<String>RoleName(int userID);
+
 }
