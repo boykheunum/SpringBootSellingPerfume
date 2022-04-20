@@ -26,8 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity http) throws Exception {
     // TODO Auto-generated method stub
     http.csrf().disable();
-    http.authorizeRequests().antMatchers("/js/**", "/css/**", "/login").permitAll().anyRequest()
-        .authenticated().and().formLogin().loginProcessingUrl("/j_spring_security_check")
+    http.authorizeRequests().antMatchers("/admin/**").authenticated().anyRequest().permitAll()
+        .and().formLogin().loginProcessingUrl("/j_spring_security_check")
         .loginPage("/login").permitAll().defaultSuccessUrl("/login?thanhcong", true)
         .failureUrl("/login?thatbai").usernameParameter("username")//
         .passwordParameter("password");
