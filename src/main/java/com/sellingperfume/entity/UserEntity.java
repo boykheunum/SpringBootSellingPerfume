@@ -50,6 +50,43 @@ public class UserEntity extends AbtractEntity {
 	
 	@Column(name = "sex", columnDefinition = "boolean default true ")
 	private boolean sex;
+	
+	@Column(name="Serect_Key")
+	private String serect_keyString;
+	
+	@Column(name="Active_OTP_Status", columnDefinition = "boolean default true ")
+	private boolean Active_OTP_Status;
+	
+	@Column(name="Login_Status", columnDefinition = "boolean default true ")
+	private boolean Login_Status;
+	
+	public String getSerect_keyString() {
+		return serect_keyString;
+	}
+
+	public void setSerect_keyString(String serect_keyString) {
+		this.serect_keyString = serect_keyString;
+	}
+
+	public boolean isActive_OTP_Status() {
+		return Active_OTP_Status;
+	}
+
+	public void setActive_OTP_Status(boolean active_OTP_Status) {
+		Active_OTP_Status = active_OTP_Status;
+	}
+
+	public boolean isLogin_Status() {
+		return Login_Status;
+	}
+
+	public void setLogin_Status(boolean login_Status) {
+		Login_Status = login_Status;
+	}
+
+	public void setStatus_user(boolean status_user) {
+		this.status_user = status_user;
+	}
 
 	public String getBirthday() {
 		return birthday;

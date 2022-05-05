@@ -14,5 +14,7 @@ public interface IUserService {
 
   public Optional<UserEntity> findUserById(int id);
   
+  public String GenarateSerectKey();
+  
 
 }

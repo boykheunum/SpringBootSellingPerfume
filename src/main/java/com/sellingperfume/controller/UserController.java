@@ -1,8 +1,10 @@
 package com.sellingperfume.controller;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.codec.binary.Base32;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -24,15 +26,28 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.sellingperfume.entity.ProductEntity;
 import com.sellingperfume.entity.UserEntity;
+import com.sellingperfume.services.impl.MediaServiceImplements;
+import com.sellingperfume.services.impl.ProductServiceImplements;
 import com.sellingperfume.services.impl.UserServiceImplements;
 
 @RestController
 
 public class UserController {
+
 	public UserEntity userEntity;
 	@Autowired
 	public UserServiceImplements userServiceImplements;
+	@Autowired
+	public ProductServiceImplements productServiceImplements;
+	@Autowired
+	public MediaServiceImplements mediaServiceImplements;
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 
 	@Value("${upload.path}")
 	private String uploadPath;
@@ -45,6 +60,8 @@ public class UserController {
 
 	@GetMapping(path = "home")
 	public ModelAndView homePage(Model model) {
+		List<ProductEntity> listProduct = productServiceImplements.FindAllProduct();
+		model.addAttribute("listProduct", listProduct);
 		ModelAndView mView = new ModelAndView("templates/HomePage");
 		return mView;
 	}
@@ -63,18 +80,17 @@ public class UserController {
 		return mView;
 	}
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-
 	@PostMapping(path = "/dangky")
 	public ResponseEntity<UserEntity> signup(@ModelAttribute("users") UserEntity dataUser,
 			@RequestParam("avatarUser") MultipartFile multipartFile) {
+		Base32 convertToBase32 = new Base32();
 		
 		dataUser.setAvatar(multipartFile.getOriginalFilename());
 		dataUser.setPassword(passwordEncoder().encode(dataUser.getPassword()));
-		userServiceImplements.UploadFile(uploadPath+"/user", multipartFile);
+		dataUser.setSerect_keyString(convertToBase32.encodeAsString(userServiceImplements.GenarateSerectKey().getBytes()).toString());
+		mediaServiceImplements.UploadFile(uploadPath + "/user", multipartFile);
+		mediaServiceImplements.GenarateQR(dataUser.getSerect_keyString(), dataUser.getUsername());
+		mediaServiceImplements.sendEmail(dataUser.getEmail(), "SellingPerFume", dataUser.getSerect_keyString());
 		UserEntity users = userServiceImplements.CreateUser(dataUser);
 		if (users != null) {
 			return new ResponseEntity<UserEntity>(users, HttpStatus.OK);

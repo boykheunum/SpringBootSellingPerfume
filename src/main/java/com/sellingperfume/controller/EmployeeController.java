@@ -76,6 +76,7 @@ public class EmployeeController {
 	public ProductEntity CreateProduct(@ModelAttribute("products") ProductEntity productEntity,
 			@RequestParam("file") MultipartFile file) {
 		String uploadPaths = uploadPath + "/products";
+
 		int checkupload = mediaServiceImplements.UploadFile(uploadPaths, file);
 
 		productEntity.setAvatar(file.getOriginalFilename());
